@@ -14,19 +14,17 @@ data "aws_ami" "ubuntu" {
 
 # Example VPC/subnet modules are assumed present; if not, you can stub them.
 # Here we assume subnet module returns `subnet_id` output.
-module "subnet" {
-  source = "../modules/subnet"
-  # if you don't have real module, it's fine for syntax checking
-}
+
 
 # EC2 module call
-module "ec2-instance" {
-  source        = "./modules/ec2-instance"
+module "ec2" {
 
-  # mapping root -> module
-  ami           = var.ami_value != "" ? var.ami_value : data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+  source = "./Moduele/ec2"
+
+  ami_value           = var.ami_value
+  instance_type       = var.instance_type
   key_name      = var.key_name
-  subnet_id     = var.subnet_id != "" ? var.subnet_id : module.subnet.subnet_id
-  tags          = var.tags
+  # subnet_id     = var.subnet_id != "" ? var.subnet_id : module.subnet.subnet_id
+  subnet_id = var.subnet_id
+  tags      = var.tags
 }

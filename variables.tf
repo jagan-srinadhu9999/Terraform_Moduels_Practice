@@ -1,7 +1,7 @@
 variable "ami_value" {
   description = "Optional AMI ID override. Leave empty to use latest Ubuntu data lookup."
   type        = string
-  default     = ""          # empty means use data source fallback
+  default     = "" # empty means use data source fallback
 }
 
 variable "instance_type" {
@@ -19,7 +19,7 @@ variable "key_name" {
 variable "subnet_id" {
   description = "Optional subnet id to use (if empty we use subnet module's output)"
   type        = string
-  default     = ""
+  default     = "subnet-0e3ef6c9aee3daf19"
 }
 
 variable "tags" {
