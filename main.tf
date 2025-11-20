@@ -37,3 +37,12 @@ module "VPC" {
   vpc_name = var.vpc_name
   tags     = var.tags
 }
+
+module "subnet" {
+
+  source = "./Moduele/Subnets"
+
+  vpc_id            = module.VPC.vpc_id
+  cidr_block        = "10.0.1.0/24" 
+  availability_zone = "us-east-1a"
+}

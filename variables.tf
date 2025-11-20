@@ -27,3 +27,20 @@ variable "tags" {
   type        = map(string)
   default     = { Name = "from-root" }
 }
+
+variable "vpc_cidr" {
+  description = "VPC CIDR block"
+  type        = string
+  default     = "10.0.0.0/16"  
+}
+variable "vpc_name" {
+  description = "VPC Name"
+  type        = string
+  default     = "sjm-main-vpc"  
+}     
+
+variable "tags" {
+  description = "Common tags"
+  type        = map(string)
+  default     = {}
+}
